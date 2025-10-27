@@ -56,12 +56,7 @@
   </head>
 <body class="bg-background-dark font-display text-text-dark-primary">
 <div class="relative flex h-auto min-h-screen w-full flex-col">
-<header class="sticky top-0 z-20 flex items-center bg-background-dark/80 p-4 backdrop-blur-sm border-b border-white/10">
-<button class="flex size-10 shrink-0 items-center justify-center rounded-full transition-colors hover:bg-white/5">
-<span class="material-symbols-outlined text-2xl">arrow_back</span>
-</button>
-<h1 class="flex-1 text-center text-xl font-bold leading-tight tracking-tight mr-10">Servizi</h1>
-</header>
+<div id="header-placeholder"></div>
 <main class="flex-grow px-4 pt-6 pb-20">
 <div class="flex flex-col gap-8">
 <div class="group relative overflow-hidden rounded-xl bg-card-dark shadow-lg transition-all hover:shadow-2xl">
@@ -164,4 +159,31 @@
 </main>
 </div>
 
+<script>
+    function bookSession() {
+        // Implement booking logic here
+        alert("Booking functionality to be implemented.");
+    }
+
+    function fetchAndInsertHTML(url, placeholderId) {
+        fetch(url)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById(placeholderId).innerHTML = data;
+                // Add event listener for hamburger menu after header is loaded
+                const hamburgerButton = document.querySelector('[data-testid="hamburger-menu"]');
+                const menu = document.querySelector('.absolute.right-4.top-16');
+                if (hamburgerButton && menu) {
+                    hamburgerButton.addEventListener('click', () => {
+                        menu.classList.toggle('hidden');
+                    });
+                }
+            })
+            .catch(error => console.error('Error loading HTML:', error));
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        fetchAndInsertHTML("header.html", "header-placeholder");
+    });
+</script>
 </body></html>

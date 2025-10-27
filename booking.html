@@ -157,7 +157,7 @@
 <div class="h-12 flex-1"></div>
 </div>
 <div class="p-4 mt-auto sticky bottom-0 bg-background-dark/80 backdrop-blur-sm">
-<button class="w-full bg-primary text-black font-bold py-4 px-4 rounded-xl h-14 flex items-center justify-center hover:bg-primary/90 transition-colors">
+<button class="w-full bg-primary text-black font-bold py-4 px-4 rounded-xl h-14 flex items-center justify-center hover:bg-primary/90 transition-colors" onclick="bookSession()">
         Continua
       </button>
 </div>
@@ -222,6 +222,13 @@
                             userActions.innerHTML = `<a href="login.html" class="text-white flex size-10 items-center justify-center rounded-full bg-surface-dark"><span class="material-symbols-outlined text-2xl">login</span></a>`;
                         }
                     });
+
+                const menuButton = document.getElementById('menu-button');
+                const mobileMenu = document.getElementById('mobile-menu');
+
+                menuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
             });
 
         const calendarDays = document.querySelectorAll('.grid.grid-cols-7.gap-y-1 button');
