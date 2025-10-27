@@ -85,14 +85,68 @@
 </div>
 </div>
 </label>
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-white text-base font-medium leading-normal pb-2">Password</p>
+<div class="flex w-full flex-1 items-stretch rounded-lg">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-l-lg text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border-none bg-[#232348] h-14 placeholder:text-[#9292c9] p-4 text-base font-normal leading-normal" placeholder="Crea una password" type="password" value=""/>
+<div class="text-[#9292c9] flex bg-[#232348] items-center justify-center pr-4 rounded-r-lg">
+<span class="material-symbols-outlined">lock</span>
+</div>
+</div>
+</label>
 </form>
 <div class="mt-8 flex flex-col gap-4">
 <button class="flex items-center justify-center rounded-lg h-14 px-6 text-base font-bold text-white bg-primary hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background-dark">Registrati</button>
 <p class="text-center text-sm text-[#9292c9]">
                     Hai già un account?
-                    <a class="font-semibold text-white hover:text-primary/90 transition-colors" href="#">Accedi</a>
+                    <a class="font-semibold text-white hover:text-primary/90 transition-colors" href="login.html">Accedi</a>
 </p>
 </div>
 </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('form');
+        const registerButton = document.querySelector('button[type="submit"]');
+
+        registerButton.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            const firstName = form.querySelector('input[placeholder="Inserisci il tuo nome"]').value;
+            const lastName = form.querySelector('input[placeholder="Inserisci il tuo cognome"]').value;
+            const email = form.querySelector('input[placeholder="iltuoindirizzo@email.com"]').value;
+            const phone = form.querySelector('input[placeholder="Inserisci il tuo numero"]').value;
+            const password = form.querySelector('input[type="password"]').value;
+
+            const data = {
+                first_name: firstName,
+                last_name: lastName,
+                email: email,
+                phone: phone,
+                password: password
+            };
+
+            fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === 'User registered successfully') {
+                    window.location.href = 'login.html';
+                } else {
+                    alert('Registration failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred');
+            });
+        });
+    });
+</script>
 </body></html>
