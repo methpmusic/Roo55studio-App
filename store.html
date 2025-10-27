@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html class="dark" lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Beat Store</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4f46e5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#121212",
+                        "surface-dark": "#1e1e1e",
+                        "text-primary-dark": "#ffffff",
+                        "text-secondary-dark": "#a0a0a0",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<style>
+        body {
+          min-height: max(884px, 100dvh);
+          background-color: #121212;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  
+            scrollbar-width: none;  
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display text-text-primary-dark">
+<div class="relative flex min-h-screen w-full flex-col">
+<header class="flex items-center bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10 border-b border-white/10">
+<div class="flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined text-primary text-3xl">
+            graphic_eq
+        </span>
+</div>
+<h1 class="text-text-primary-dark text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Roof55 Store</h1>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full size-10 bg-transparent text-white/90">
+<span class="material-symbols-outlined text-2xl">
+                tune
+            </span>
+</button>
+</div>
+</header>
+<div class="px-4 py-3 sticky top-[76px] bg-background-dark z-10">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary-dark">
+            search
+        </span>
+<input class="form-input w-full rounded-full border-none bg-surface-dark py-3 pl-10 pr-4 text-text-primary-dark placeholder:text-text-secondary-dark focus:ring-2 focus:ring-primary/50" placeholder="Cerca beat, produttore..." type="text" value=""/>
+</div>
+</div>
+<div class="flex gap-2 px-4 pb-4 overflow-x-auto no-scrollbar">
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary px-4 py-1.5"><p class="text-white text-sm font-medium leading-normal">Tutti</p></button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-surface-dark px-4 py-1.5"><p class="text-text-secondary-dark text-sm font-medium leading-normal">Trap</p></button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-surface-dark px-4 py-1.5"><p class="text-text-secondary-dark text-sm font-medium leading-normal">Lo-fi</p></button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-surface-dark px-4 py-1.5"><p class="text-text-secondary-dark text-sm font-medium leading-normal">Pop</p></button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-surface-dark px-4 py-1.5"><p class="text-text-secondary-dark text-sm font-medium leading-normal">Hip Hop</p></button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-surface-dark px-4 py-1.5"><p class="text-text-secondary-dark text-sm font-medium leading-normal">R&amp;B</p></button>
+</div>
+<main class="flex flex-1 flex-col gap-2 px-4 pb-28">
+<div class="flex items-center gap-4 rounded-lg bg-surface-dark p-3">
+<div class="h-14 w-14 shrink-0 overflow-hidden rounded-md bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCA-pQUPdodBcQuJbaBUWJJmUxj8NHDNaBJO3w6MR0u57mGYSI4h6qK_Kdt4Zpwy1w5d9XVkX3XOf1NvYJ5QQI0GQFP8WhdsmbbGldBZwPK29fjxVHyD23-Xph2pt6oJHJa2uT1HKlDxWJ2SJRgVaeOyE984ODKktqllUCCuGTYFQqpAVOaMsL7_W6UbI4m_kdpn8uuN-fMc2ZTWmNwRr4XaDOTDzkDOlHsYFmPatqlJfQtIXpJ76cbyizRCo9BNewBJtnHjxw4TPNA");'></div>
+<div class="flex min-w-0 flex-1 flex-col">
+<p class="truncate font-bold leading-tight">Midnight Haze</p>
+<p class="text-sm text-text-secondary-dark">Prod. by Metro</p>
+</div>
+<p class="text-sm font-medium text-text-secondary-dark">€29.99</p>
+<button class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-white">
+<span class="material-symbols-outlined text-2xl">play_arrow</span>
+</button>
+</div>
+<div class="flex items-center gap-4 rounded-lg bg-surface-dark p-3">
+<div class="h-14 w-14 shrink-0 overflow-hidden rounded-md bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAH_ZZ3XxoLhalRJ7BGZGSwF1rXw5Zf1OHONQytKaFbQq2Mg5gVwT0_RMnBjmtIJzMDwh6NQZlbC8pk97UA0P2fLs-S0V25AXCtuEB9Plt4VYuArXDCkgUfybSw5X76Fiqr2SgOJioYIP-ETZ_wNJbn4MEE_hLtI37av1PWtvH3faQolXFyadYUPeH3iKyv4l9zf7OaUvr0qwhBuee2vhgaJvDuNUpkFab0uV4AQXT_GsQiWJ2pxeN1quWZpWt5lTRXv5nTO129I4_D");'></div>
+<div class="flex min-w-0 flex-1 flex-col">
+<p class="truncate font-bold leading-tight">Sunset Drive</p>
+<p class="text-sm text-text-secondary-dark">Prod. by Aura</p>
+</div>
+<p class="text-sm font-medium text-text-secondary-dark">€24.99</p>
+<button class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-white">
+<span class="material-symbols-outlined text-2xl">play_arrow</span>
+</button>
+</div>
+<div class="flex items-center gap-4 rounded-lg bg-surface-dark p-3">
+<div class="h-14 w-14 shrink-0 overflow-hidden rounded-md bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBW42AOyVLNA_EObBaFeQyF9_Ke_Ug8w7M-PTkEIYyUaEi1Rh2MoDO6UFsSyrrmBqNNUFA6C92fTppBaYUt6KNkpKXugRZV_Bl-8Ei0mgMaazScFQUOdFHJCzLyPjZ0AMnF4Kpo0h4BclouBBAYFr0356_m5CA-wji6N01pwml-yqxJzwh1oezVJz5Jh6yIw4WOTwHRw_1xraORF-8G-9jmlPhU848H7IXex6Pos7jGmPiVYD2AmDedKBiUak0ecrPms9QKykM_z3gq");'></div>
+<div class="flex min-w-0 flex-1 flex-col">
+<p class="truncate font-bold leading-tight">City Echoes</p>
+<p class="text-sm text-text-secondary-dark">Prod. by Ghost</p>
+</div>
+<p class="text-sm font-medium text-text-secondary-dark">€34.99</p>
+<button class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-white">
+<span class="material-symbols-outlined text-2xl">play_arrow</span>
+</button>
+</div>
+<div class="flex items-center gap-4 rounded-lg bg-surface-dark p-3">
+<div class="h-14 w-14 shrink-0 overflow-hidden rounded-md bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCBOuBY_rq6pZjNCTSPCLhvwz6AGTemDbxbzRRWhEjDMMZyVCN9gDcdPfjls0lCSfjIaaRssE3ARq2O79spEGBZ1QmbufK6ne_x8WqPfPHgMKcTDjXZA2Mk-NHjk3LuZZXD8FV_yigmZeaZ6Q1cSaMbb6a2tc1Qp_hsXAe3FuUKMcHdXcNA2tpo5yyQC9OEU1PC4gnCqN9PWKHfdd3QoHfTV0dwG91IVzWUy1p3aPFQ8_XTeO52RDijRS1fbtnEQCiJkOCUuzbdY0hX");'></div>
+<div class="flex min-w-0 flex-1 flex-col">
+<p class="truncate font-bold leading-tight">Lo-Fi Dreams</p>
+<p class="text-sm text-text-secondary-dark">Prod. by Notion</p>
+</div>
+<p class="text-sm font-medium text-text-secondary-dark">€19.99</p>
+<button class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-white">
+<span class="material-symbols-outlined text-2xl">play_arrow</span>
+</button>
+</div>
+<div class="flex items-center gap-4 rounded-lg bg-surface-dark p-3">
+<div class="h-14 w-14 shrink-0 overflow-hidden rounded-md bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBI6_2DTAVMZSUoGbnnBktFpUbp2eqaX-_01Sq2xWrHeghTL-jud_PTft67mqERxUvemEUjrr_eosKHBR8yK_HlxjF-VaDiSMiue5FWd9cYKE_pCdMIoEBn39ecEHE52MGf54oUyW1Tk7u4nMJY8dQRHvHAefQRLfhFxOZOOOkJpNjXE-ou4be6uc92qpA-L05I_yyrRznIdqHSj_rYvoqmYdO4kv6WWpibR_Yp670_5UbnxMMO3qzTd5d7NtmfqoLmqJlsjMZlQq0H");'></div>
+<div class="flex min-w-0 flex-1 flex-col">
+<p class="truncate font-bold leading-tight">Cosmic Drift</p>
+<p class="text-sm text-text-secondary-dark">Prod. by Orion</p>
+</div>
+<p class="text-sm font-medium text-text-secondary-dark">€22.50</p>
+<button class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-white">
+<span class="material-symbols-outlined text-2xl">play_arrow</span>
+</button>
+</div>
+</main>
+<footer class="fixed bottom-0 left-0 right-0 z-20 p-2">
+<div class="mx-auto flex max-w-4xl items-center gap-3 rounded-lg bg-[#2a2a3c]/80 p-2 shadow-2xl backdrop-blur-lg">
+<div class="h-12 w-12 shrink-0 rounded-md bg-cover bg-center" data-alt="Abstract gradient of blue and purple hues" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCA-pQUPdodBcQuJbaBUWJJmUxj8NHDNaBJO3w6MR0u57mGYSI4h6qK_Kdt4Zpwy1w5d9XVkX3XOf1NvYJ5QQI0GQFP8WhdsmbbGldBZwPK29fjxVHyD23-Xph2pt6oJHJa2uT1HKlDxWJ2SJRgVaeOyE984ODKktqllUCCuGTYFQqpAVOaMsL7_W6UbI4m_kdpn8uuN-fMc2ZTWmNwRr4XaDOTDzkDOlHsYFmPatqlJfQtIXpJ76cbyizRCo9BNewBJtnHjxw4TPNA");'></div>
+<div class="min-w-0 flex-1">
+<p class="truncate text-base font-bold leading-tight text-white">Midnight Haze</p>
+<p class="truncate text-sm font-normal leading-normal text-text-secondary-dark">Prod. by Metro</p>
+<div class="mt-2 h-1 w-full rounded-full bg-white/10">
+<div class="h-1 rounded-full bg-primary" style="width: 45%"></div>
+</div>
+</div>
+<button class="flex shrink-0 items-center justify-center rounded-full p-2 text-white">
+<span class="material-symbols-outlined text-4xl">
+                pause_circle
+            </span>
+</button>
+</div>
+</footer>
+</div>
+
+</body></html>

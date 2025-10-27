@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Registrazione - Roof55</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 300,
+          'GRAD' 0,
+          'opsz' 24
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1111d4",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101022",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col items-center justify-center bg-background-dark p-4 group/design-root" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
+<div class="w-full max-w-md">
+<div class="text-center mb-8">
+<h2 class="text-3xl font-bold text-white tracking-tight">Roof55</h2>
+</div>
+<h1 class="text-white tracking-light text-[32px] font-bold leading-tight text-left pb-3 pt-6">Crea il tuo account</h1>
+<form class="space-y-4">
+<div class="flex flex-col sm:flex-row sm:gap-4 space-y-4 sm:space-y-0">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-white text-base font-medium leading-normal pb-2">Nome</p>
+<div class="flex w-full flex-1 items-stretch rounded-lg">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border-none bg-[#232348] h-14 placeholder:text-[#9292c9] p-4 pr-2 text-base font-normal leading-normal" placeholder="Inserisci il tuo nome" value=""/>
+</div>
+</label>
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-white text-base font-medium leading-normal pb-2">Cognome</p>
+<div class="flex w-full flex-1 items-stretch rounded-lg">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border-none bg-[#232348] h-14 placeholder:text-[#9292c9] p-4 pr-2 text-base font-normal leading-normal" placeholder="Inserisci il tuo cognome" value=""/>
+</div>
+</label>
+</div>
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-white text-base font-medium leading-normal pb-2">Email</p>
+<div class="flex w-full flex-1 items-stretch rounded-lg">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-l-lg text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border-none bg-[#232348] h-14 placeholder:text-[#9292c9] p-4 text-base font-normal leading-normal" placeholder="iltuoindirizzo@email.com" value=""/>
+<div class="text-[#9292c9] flex bg-[#232348] items-center justify-center pr-4 rounded-r-lg">
+<span class="material-symbols-outlined">alternate_email</span>
+</div>
+</div>
+</label>
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-white text-base font-medium leading-normal pb-2">Numero di Telefono</p>
+<div class="flex w-full flex-1 items-stretch rounded-lg">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-l-lg text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border-none bg-[#232348] h-14 placeholder:text-[#9292c9] p-4 text-base font-normal leading-normal" placeholder="Inserisci il tuo numero" type="tel" value=""/>
+<div class="text-[#9292c9] flex bg-[#232348] items-center justify-center pr-4 rounded-r-lg">
+<span class="material-symbols-outlined">phone</span>
+</div>
+</div>
+</label>
+</form>
+<div class="mt-8 flex flex-col gap-4">
+<button class="flex items-center justify-center rounded-lg h-14 px-6 text-base font-bold text-white bg-primary hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background-dark">Registrati</button>
+<p class="text-center text-sm text-[#9292c9]">
+                    Hai già un account?
+                    <a class="font-semibold text-white hover:text-primary/90 transition-colors" href="#">Accedi</a>
+</p>
+</div>
+</div>
+</div>
+</body></html>
