@@ -46,12 +46,7 @@
   </head>
 <body class="bg-background-dark text-white">
 <div class="relative flex h-auto min-h-screen w-full flex-col font-display group/design-root overflow-x-hidden">
-<header class="flex items-center bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
-<button class="text-white flex size-10 items-center justify-center rounded-full bg-surface-dark">
-<span class="material-symbols-outlined text-2xl">arrow_back</span>
-</button>
-<h1 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Prenota Sessione</h1>
-</header>
+<div id="header-placeholder"></div>
 <div class="flex w-full flex-row items-center justify-center gap-2 py-5 px-4">
 <div class="h-1 flex-1 rounded-full bg-primary"></div>
 <div class="h-1 flex-1 rounded-full bg-gray-700"></div>
@@ -100,7 +95,7 @@
 <button class="h-10 w-full text-white text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-white/10 transition-colors">9</div></button>
 <button class="h-10 w-full text-white text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-white/10 transition-colors">10</div></button>
 <button class="h-10 w-full text-white text-sm font-medium leading-normal relative">
-<div class="flex size-full items-center justify-center rounded-full bg-primary text-black font-bold">11</div>
+<div id="day-11" class="flex size-full items-center justify-center rounded-full bg-primary text-black font-bold">11</div>
 </button>
 <button class="h-10 w-full text-white text-sm font-medium leading-normal relative">
 <div class="flex size-full items-center justify-center rounded-full hover:bg-white/10 transition-colors">12</div>
@@ -168,4 +163,94 @@
 </div>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                fetch('/check_login')
+                    .then(response => response.json())
+                    .then(data => {
+                        const userActions = document.getElementById('user-actions');
+                        if (data.logged_in) {
+                            userActions.innerHTML = `<button class="text-white flex size-10 items-center justify-center rounded-full bg-surface-dark" onclick="logout()"><span class="material-symbols-outlined text-2xl">logout</span></button>`;
+                        } else {
+                            userActions.innerHTML = `<a href="login.html" class="text-white flex size-10 items-center justify-center rounded-full bg-surface-dark"><span class="material-symbols-outlined text-2xl">login</span></a>`;
+                        }
+                    });
+            });
+
+        const selectedDateElement = document.querySelector('.bg-primary');
+        const day = selectedDateElement.textContent;
+        const monthYear = document.querySelector('.text-white.text-base.font-bold.leading-tight').textContent;
+        const month = monthYear.split(' ')[0];
+        const year = monthYear.split(' ')[1];
+        const selectedDate = `${year}-${month}-${day}`;
+
+        fetch(`/available_slots/${selectedDate}`)
+            .then(response => response.json())
+            .then(slots => {
+                const slotsContainer = document.querySelector('.flex.gap-3.px-4.py-2.flex-wrap');
+                slotsContainer.innerHTML = '';
+                slots.forEach(slot => {
+                    const button = document.createElement('button');
+                    button.className = 'flex h-12 flex-1 items-center justify-center gap-x-2 rounded-xl border border-gray-700 bg-transparent px-4 text-center transition-colors hover:bg-gray-800';
+                    button.innerHTML = `<p class="text-white text-sm font-medium leading-normal">${slot}</p>`;
+                    button.onclick = () => {
+                        document.querySelectorAll('.flex.gap-3.px-4.py-2.flex-wrap button').forEach(btn => {
+                            btn.classList.remove('border-primary', 'bg-primary/20');
+                            btn.classList.add('border-gray-700');
+                        });
+                        button.classList.add('border-primary', 'bg-primary/20');
+                        button.classList.remove('border-gray-700');
+                    };
+                    slotsContainer.appendChild(button);
+                });
+            });
+    });
+
+    function bookSession() {
+        const selectedTimeElement = document.querySelector('.border-primary.bg-primary/20 p');
+        if (!selectedTimeElement) {
+            alert('Please select a time slot.');
+            return;
+        }
+        const selectedTime = selectedTimeElement.textContent;
+
+        const selectedDateElement = document.querySelector('.bg-primary');
+        if (!selectedDateElement) {
+            alert('Please select a date.');
+            return;
+        }
+        const day = selectedDateElement.textContent;
+        const monthYear = document.querySelector('.text-white.text-base.font-bold.leading-tight').textContent;
+        const month = monthYear.split(' ')[0];
+        const year = monthYear.split(' ')[1];
+        const selectedDate = `${year}-${month}-${day}`;
+
+
+        fetch('/book', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ date: selectedDate, time: selectedTime })
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+            if (data.message === 'Booking successful') {
+                window.location.reload();
+            }
+        });
+    }
+
+    function logout() {
+        fetch('/logout')
+        .then(response => {
+            if (response.ok) {
+                window.location.href = 'login.html';
+            }
+        });
+    }
+</script>
 </body></html>
