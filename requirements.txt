@@ -1,5 +1,21 @@
+# Core web framework
 Flask>=3.0
+
+# WSGI server per produzione
 gunicorn>=21.2
-flask_sqlalchemy>=3.1
+
+# Database ORM
 SQLAlchemy>=2.0
-flask-bcrypt>=1.0.1
+flask_sqlalchemy>=3.1
+
+# Sicurezza e hashing password
+Flask-Bcrypt==1.0.1
+bcrypt>=4.1
+
+# Altri moduli utili per sessioni, autenticazione e form (opzionali ma consigliati)
+Flask-Login>=0.6.3
+Flask-WTF>=1.2.1
+
+# Supporto CORS (solo se usi chiamate API da frontend JS)
+Flask-Cors>=4.0.0
+
