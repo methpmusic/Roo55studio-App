@@ -64,21 +64,7 @@
   </head>
 <body class="bg-background-dark font-display text-text-primary-dark">
 <div class="relative flex min-h-screen w-full flex-col">
-<header class="flex items-center bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10 border-b border-white/10">
-<div class="flex size-12 shrink-0 items-center justify-start">
-<span class="material-symbols-outlined text-primary text-3xl">
-            graphic_eq
-        </span>
-</div>
-<h1 class="text-text-primary-dark text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Roof55 Store</h1>
-<div class="flex w-12 items-center justify-end">
-<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full size-10 bg-transparent text-white/90">
-<span class="material-symbols-outlined text-2xl">
-                tune
-            </span>
-</button>
-</div>
-</header>
+<div id="header-placeholder"></div>
 <div class="px-4 py-3 sticky top-[76px] bg-background-dark z-10">
 <div class="relative w-full">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary-dark">
@@ -171,4 +157,31 @@
 </footer>
 </div>
 
+<script>
+    function bookSession() {
+        // Implement booking logic here
+        alert("Booking functionality to be implemented.");
+    }
+
+    function fetchAndInsertHTML(url, placeholderId) {
+        fetch(url)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById(placeholderId).innerHTML = data;
+                // Add event listener for hamburger menu after header is loaded
+                const hamburgerButton = document.querySelector('[data-testid="hamburger-menu"]');
+                const menu = document.querySelector('.absolute.right-4.top-16');
+                if (hamburgerButton && menu) {
+                    hamburgerButton.addEventListener('click', () => {
+                        menu.classList.toggle('hidden');
+                    });
+                }
+            })
+            .catch(error => console.error('Error loading HTML:', error));
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        fetchAndInsertHTML("header.html", "header-placeholder");
+    });
+</script>
 </body></html>

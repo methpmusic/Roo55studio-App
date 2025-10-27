@@ -49,17 +49,7 @@
   </head>
 <body class="bg-background-light dark:bg-background-dark font-display">
 <div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
-<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
-<div class="text-white flex size-12 shrink-0 items-center justify-start">
-<span class="material-symbols-outlined text-gray-200 dark:text-white">arrow_back</span>
-</div>
-<h1 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Chi Siamo</h1>
-<div class="flex w-12 items-center justify-end">
-<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-gray-900 dark:text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
-<span class="material-symbols-outlined">menu</span>
-</button>
-</div>
-</div>
+<div id="header-placeholder"></div>
 <div class="@container">
 <div class="@[480px]:px-4 @[480px]:py-3 px-0 py-0">
 <div class="bg-cover bg-center flex flex-col justify-end overflow-hidden bg-background-dark @[480px]:rounded-xl min-h-80" data-alt="Un mixer da studio di registrazione illuminato da luci soffuse e calde in un ambiente buio." style='background-image: linear-gradient(0deg, rgba(18, 18, 18, 0.8) 0%, rgba(18, 18, 18, 0) 40%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDAlCuwBrrWQsHERro4zepb-5-IgKjkGjVcTqs55CqOHyb48LKt7VhYHfOyuuZNs1VQ7cwtFsN8ENhlQyvtWP3ItG5spyOWDI7sCBfVi3G8mCJVeBH7_srFYmK0K3WNaAM7VVMYitVwOqEvKqifrYMRW3SqF6CXZUs-MdGn-kz5TBNbHywvqpioTR6jbmlGTyOoFFSyV1-v9pDtErvwtAq5MH8cZK5kRzoyfLLvQYdAiHiHFeqAva3L5Iot7oU-sOUMK9BdFoaoroL8");'>
@@ -104,4 +94,31 @@
 </div>
 </div>
 
+<script>
+    function bookSession() {
+        // Implement booking logic here
+        alert("Booking functionality to be implemented.");
+    }
+
+    function fetchAndInsertHTML(url, placeholderId) {
+        fetch(url)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById(placeholderId).innerHTML = data;
+                // Add event listener for hamburger menu after header is loaded
+                const hamburgerButton = document.querySelector('[data-testid="hamburger-menu"]');
+                const menu = document.querySelector('.absolute.right-4.top-16');
+                if (hamburgerButton && menu) {
+                    hamburgerButton.addEventListener('click', () => {
+                        menu.classList.toggle('hidden');
+                    });
+                }
+            })
+            .catch(error => console.error('Error loading HTML:', error));
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        fetchAndInsertHTML("header.html", "header-placeholder");
+    });
+</script>
 </body></html>
