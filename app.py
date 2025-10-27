@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify, session, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
@@ -5,7 +6,7 @@ from flask_bcrypt import Bcrypt
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-app.config['SECRET_KEY'] = 'your_secret_key'  # Change this to a random secret key
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'your_secret_key')
 db = SQLAlchemy(app)
 
 @app.route('/')

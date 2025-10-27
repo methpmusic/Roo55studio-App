@@ -164,31 +164,28 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-                fetch('/check_login')
-                    .then(response => response.json())
-                    .then(data => {
-                        const userActions = document.getElementById('user-actions');
-                        if (data.logged_in) {
-                            userActions.innerHTML = `<button class="text-white flex size-10 items-center justify-center rounded-full bg-surface-dark" onclick="logout()"><span class="material-symbols-outlined text-2xl">logout</span></button>`;
-                        } else {
-                            userActions.innerHTML = `<a href="login.html" class="text-white flex size-10 items-center justify-center rounded-full bg-surface-dark"><span class="material-symbols-outlined text-2xl">login</span></a>`;
-                        }
-                    });
-            });
-
+    function getSelectedDate() {
         const selectedDateElement = document.querySelector('.bg-primary');
+        if (!selectedDateElement) {
+            return null;
+        }
         const day = selectedDateElement.textContent;
         const monthYear = document.querySelector('.text-white.text-base.font-bold.leading-tight').textContent;
         const month = monthYear.split(' ')[0];
         const year = monthYear.split(' ')[1];
-        const selectedDate = `${year}-${month}-${day}`;
 
-        fetch(`/available_slots/${selectedDate}`)
+        // Convert month name to number
+        const monthNames = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno",
+                            "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
+        const monthIndex = monthNames.indexOf(month) + 1;
+        const monthString = monthIndex < 10 ? '0' + monthIndex : monthIndex;
+        const dayString = day.length < 2 ? '0' + day : day;
+
+        return `${year}-${monthString}-${dayString}`;
+    }
+
+    function fetchAvailableSlots(date) {
+        fetch(`/available_slots/${date}`)
             .then(response => response.json())
             .then(slots => {
                 const slotsContainer = document.querySelector('.flex.gap-3.px-4.py-2.flex-wrap');
@@ -208,6 +205,46 @@
                     slotsContainer.appendChild(button);
                 });
             });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                fetch('/check_login')
+                    .then(response => response.json())
+                    .then(data => {
+                        const userActions = document.getElementById('user-actions');
+                        if (data.logged_in) {
+                            userActions.innerHTML = `<button class="text-white flex size-10 items-center justify-center rounded-full bg-surface-dark" onclick="logout()"><span class="material-symbols-outlined text-2xl">logout</span></button>`;
+                        } else {
+                            userActions.innerHTML = `<a href="login.html" class="text-white flex size-10 items-center justify-center rounded-full bg-surface-dark"><span class="material-symbols-outlined text-2xl">login</span></a>`;
+                        }
+                    });
+            });
+
+        const calendarDays = document.querySelectorAll('.grid.grid-cols-7.gap-y-1 button');
+        calendarDays.forEach(day => {
+            day.addEventListener('click', () => {
+                calendarDays.forEach(d => {
+                    const div = d.querySelector('div');
+                    div.classList.remove('bg-primary', 'text-black', 'font-bold');
+                });
+                const div = day.querySelector('div');
+                div.classList.add('bg-primary', 'text-black', 'font-bold');
+
+                const selectedDate = getSelectedDate();
+                if (selectedDate) {
+                    fetchAvailableSlots(selectedDate);
+                }
+            });
+        });
+
+        const initialDate = getSelectedDate();
+        if (initialDate) {
+            fetchAvailableSlots(initialDate);
+        }
     });
 
     function bookSession() {
@@ -223,12 +260,11 @@
             alert('Please select a date.');
             return;
         }
-        const day = selectedDateElement.textContent;
-        const monthYear = document.querySelector('.text-white.text-base.font-bold.leading-tight').textContent;
-        const month = monthYear.split(' ')[0];
-        const year = monthYear.split(' ')[1];
-        const selectedDate = `${year}-${month}-${day}`;
-
+        const selectedDate = getSelectedDate();
+        if (!selectedDate) {
+            alert('Please select a date.');
+            return;
+        }
 
         fetch('/book', {
             method: 'POST',
